@@ -7,7 +7,7 @@
       "description": "start, stop or status",
       "type": "Enum[start, stop, status]"
     },
-    "option": {
+    "service": {
       "description": "start, stop or status",
       "type": "Enum[amazon-ssm-agent, sshd, crond]"
     }
