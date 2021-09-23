@@ -26,7 +26,7 @@
 #   }
 # Learn more at: https://puppet.com/docs/bolt/0.x/writing_tasks.html#ariaid-title11
 #
-sudo systemctl $PT_option amazon-ssm-agent
+systemctl $PT_option amazon-ssm-agent
 
 
 
