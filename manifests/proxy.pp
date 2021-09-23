@@ -34,9 +34,9 @@
 #
 # Copyright 2017-2019 Shine Solutions, unless otherwise noted.
 #
-class amazon_ssm_agent::proxy (
+class amazonssmagent::proxy (
   $proxy_url    = undef,
-  $srv_provider = lookup('amazon_ssm_agent::srv_provider', String, 'first'),
+  $srv_provider = lookup('amazonssmagent::srv_provider', String, 'first'),
   ) {
     $proxy_env_vars = [ 'http_proxy', 'https_proxy', 'HTTP_PROXY', 'HTTPS_PROXY' ]
 
