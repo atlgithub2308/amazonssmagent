@@ -45,18 +45,18 @@
 #
 # Copyright 2017-2019 Shine Solutions, unless otherwise noted.
 #
-class amazon_ssm_agent (
+class amazonssmagent (
   String $region              = 'us-east-1',
   Optional[String] $proxy_url = undef,
   Boolean $service_enable     = true,
   $service_ensure             = 'running',
   ) {
 
-    $pkg_provider = lookup('amazon_ssm_agent::pkg_provider', String, 'first')
-    $pkg_format   = lookup('amazon_ssm_agent::pkg_format', String, 'first')
-    $flavor       = lookup('amazon_ssm_agent::flavor', String, 'first')
+    $pkg_provider = lookup('amazonssmagent::pkg_provider', String, 'first')
+    $pkg_format   = lookup('amazonssmagent::pkg_format', String, 'first')
+    $flavor       = lookup('amazonssmagent::flavor', String, 'first')
 
-    $srv_provider = lookup('amazon_ssm_agent::srv_provider', String, 'first')
+    $srv_provider = lookup('amazonssmagent::srv_provider', String, 'first')
 
     case $facts['os']['architecture'] {
       'x86_64','amd64': {
@@ -86,7 +86,7 @@ class amazon_ssm_agent (
     }
 
     if $service_ensure {
-      class { '::amazon_ssm_agent::proxy':
+      class { '::amazonssmagent::proxy':
         proxy_url    => $proxy_url,
         srv_provider => $srv_provider,
         require      => Package['amazon-ssm-agent'],
@@ -98,7 +98,7 @@ class amazon_ssm_agent (
         provider => $srv_provider,
       }
 
-      Class['::amazon_ssm_agent::proxy'] -> Service['amazon-ssm-agent']
+      Class['::amazonssmagent::proxy'] -> Service['amazon-ssm-agent']
     }
 
     file {"/tmp/amazon-ssm-agent.${pkg_format}":
