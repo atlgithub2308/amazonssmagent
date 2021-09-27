@@ -9,7 +9,7 @@
     },
     "rtype": {
       "description": "resource type",
-      "type": "Enum[user, group, cron, host, mount]"
+      "type": "Enum[user, group, cron, service, package, host, mount]"
     }
   }
 }
