@@ -1,0 +1,15 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A short description of this task",
+  "parameters": {
+    "rname": {
+      "description": "resource name",
+      "type": "String"
+    },
+    "rtype": {
+      "description": "resource type",
+      "type": "Enum[user, group, cron, host, mount]"
+    }
+  }
+}
