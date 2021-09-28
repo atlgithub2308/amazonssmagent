@@ -73,7 +73,7 @@ Facter.add(:globepolicy_2_9_output) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
-    s = Facter::Core::Execution.exec(
+    Facter::Core::Execution.exec(
       'timezonectl'
     )
   end
