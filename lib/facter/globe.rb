@@ -61,7 +61,7 @@ Facter.add(:globepolicy_2_9) do
       'timedatectl |  grep Time'
     )
    
-    if ( s == "Time zone: UTC \(UTC, +0000\)" )
+    if ( s == "Time zone: Etc/UTC \(UTC, +0000\)" )
       :pass
     else
       :fail
