@@ -176,3 +176,36 @@ Facter.add(:globepolicy_2_b16_output2) do
     )
   end
 end
+
+Facter.add(:globepolicy_3_2) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    total = Facter::Core::Execution.exec(
+      'free -m |grep Mem | awk -F" " \'{ print $2}\' '
+    )
+    
+    used = Facter::Core::Execution.exec(
+      'free -m |grep Mem | awk -F" " \'{ print $3}\' '
+    )
+    
+    percent = used / total * 100
+   
+    if ( percent < 70 )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:globepolicy_3_2_output) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    Facter::Core::Execution.exec(
+      'free -m'
+    )
+  end
+end
+
