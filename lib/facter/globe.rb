@@ -52,3 +52,29 @@ Facter.add(:globepolicy_1_5_output) do
     )
   end
 end
+
+Facter.add(:globepolicy_2_9) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'timedatectl |  grep Time'
+    )
+   
+    if ( s == "Time zone: UTC \(UTC, +0000\)" )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:globepolicy_2_9_output) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'timezonectl'
+    )
+  end
+end
