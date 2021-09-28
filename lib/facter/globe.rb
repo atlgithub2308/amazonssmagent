@@ -141,4 +141,30 @@ Facter.add(:globepolicy_2_b10_output_dns) do
   end
 end
 
+Facter.add(:globepolicy_2_b16) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'crontab -l |grep 6 | awk -F" " \'{ print $6}\' '
+    )
+   
+    if ( s == "/opt/puppetlabs/pe_patch/pe_patch_fact_generation.sh" )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:globepolicy_2_b16_output) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    Facter::Core::Execution.exec(
+      'crontab -l'
+    )
+  end
+end
+
 
