@@ -270,7 +270,7 @@ Facter.add(:a_globepolicy_3_6_output) do
   s = "There are " + c + " errors"
   setcode do
     Facter::Core::Execution.exec(
-      'echo #@s ' 
+      'echo "s" ' 
     )
   end
 end
