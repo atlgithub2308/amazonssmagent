@@ -191,7 +191,7 @@ Facter.add(:globepolicy_3_2) do
     
     percent = used.to_i / total.to_i * 100
    
-    if ( percent < 70 )
+    if ( percent <= 70 )
       :pass
     else
       :fail
