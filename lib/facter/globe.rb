@@ -79,7 +79,7 @@ Facter.add(:globepolicy_2_9_output) do
   end
 end
 
-Facter.add(:globepolicy_2_10) do
+Facter.add(:globepolicy_2_10_ntp) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -95,7 +95,7 @@ Facter.add(:globepolicy_2_10) do
   end
 end
 
-Facter.add(:globepolicy_2_10_output1) do
+Facter.add(:globepolicy_2_10_output1_ntp) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -105,7 +105,7 @@ Facter.add(:globepolicy_2_10_output1) do
   end
 end
 
-Facter.add(:globepolicy_2_10_output2) do
+Facter.add(:globepolicy_2_10_output2_ntp) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -114,3 +114,31 @@ Facter.add(:globepolicy_2_10_output2) do
     )
   end
 end
+
+Facter.add(:globepolicy_2_10_dns) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'awk -F" " \'{ print $4}\''
+    )
+   
+    if ( s == "google.internal." )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:globepolicy_2_10_output1_ntp) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    Facter::Core::Execution.exec(
+      'cat /etc/resolv.conf'
+    )
+  end
+end
+
+
