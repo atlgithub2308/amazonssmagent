@@ -1,6 +1,6 @@
 Facter.add(:a_globepolicy_1_1) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s1 = Facter::Core::Execution.exec(
       'awk -F: \'{ print $1}\' /etc/passwd |grep "sysad1"'
