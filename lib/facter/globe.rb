@@ -157,7 +157,7 @@ Facter.add(:globepolicy_2_b16) do
   end
 end
 
-Facter.add(:globepolicy_2_b16_output) do
+Facter.add(:globepolicy_2_b16_output1) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -167,4 +167,12 @@ Facter.add(:globepolicy_2_b16_output) do
   end
 end
 
-
+Facter.add(:globepolicy_2_b16_output2) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    Facter::Core::Execution.exec(
+      'systemctl status cron'
+    )
+  end
+end
