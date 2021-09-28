@@ -17,8 +17,8 @@ Facter.add(:a_globepolicy_1_1) do
 end
 
 Facter.add(:a_globepolicy_1_1_output) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
       'awk -F: \'{ print $1}\' /etc/passwd'
@@ -28,8 +28,8 @@ end
 
 
 Facter.add(:a_globepolicy_1_5) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
       'puppet resource service sshd |  grep -i sshd |awk -F \' \' \'{ print $3}\''
@@ -44,8 +44,8 @@ Facter.add(:a_globepolicy_1_5) do
 end
 
 Facter.add(:a_globepolicy_1_5_output) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
       'puppet resource service sshd'
@@ -54,8 +54,8 @@ Facter.add(:a_globepolicy_1_5_output) do
 end
 
 Facter.add(:a_globepolicy_2_9) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
       'timedatectl |  grep Time'
@@ -70,8 +70,8 @@ Facter.add(:a_globepolicy_2_9) do
 end
 
 Facter.add(:a_globepolicy_2_9_output) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
       'timedatectl'
@@ -80,8 +80,8 @@ Facter.add(:a_globepolicy_2_9_output) do
 end
 
 Facter.add(:a_globepolicy_2_a10_ntp) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
       'puppet resource service chrony |  grep -i ensure | awk -F"\'" \'{ print $2}\''
@@ -96,8 +96,8 @@ Facter.add(:a_globepolicy_2_a10_ntp) do
 end
 
 Facter.add(:a_globepolicy_2_a10_output1_ntp) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
       'systemctl status chrony'
@@ -106,8 +106,8 @@ Facter.add(:a_globepolicy_2_a10_output1_ntp) do
 end
 
 Facter.add(:a_globepolicy_2_a10_output2_ntp) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
       'puppet resource service chrony'
@@ -116,8 +116,8 @@ Facter.add(:a_globepolicy_2_a10_output2_ntp) do
 end
 
 Facter.add(:a_globepolicy_2_b10_dns) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
       'cat /etc/resolv.conf |grep nameserver | awk -F" " \'{ print $2}\' '
@@ -132,8 +132,8 @@ Facter.add(:a_globepolicy_2_b10_dns) do
 end
 
 Facter.add(:a_globepolicy_2_b10_output_dns) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
       'cat /etc/resolv.conf'
@@ -142,8 +142,8 @@ Facter.add(:a_globepolicy_2_b10_output_dns) do
 end
 
 Facter.add(:a_globepolicy_2_b16) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
       'crontab -l |grep 6 | awk -F" " \'{ print $6}\' '
@@ -158,8 +158,8 @@ Facter.add(:a_globepolicy_2_b16) do
 end
 
 Facter.add(:a_globepolicy_2_b16_output1) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
       'crontab -l'
@@ -168,8 +168,8 @@ Facter.add(:a_globepolicy_2_b16_output1) do
 end
 
 Facter.add(:a_globepolicy_2_b16_output2) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
       'systemctl status cron'
@@ -178,8 +178,8 @@ Facter.add(:a_globepolicy_2_b16_output2) do
 end
 
 Facter.add(:a_globepolicy_3_2) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     total = Facter::Core::Execution.exec(
       'free -m |grep Mem | awk -F" " \'{ print $2}\' '
@@ -200,8 +200,8 @@ Facter.add(:a_globepolicy_3_2) do
 end
 
 Facter.add(:a_globepolicy_3_2_output) do
-  confine :osfamily => 'Debian'
-  confine :operatingsystemmajrelease => '10'
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
       'free -m'
