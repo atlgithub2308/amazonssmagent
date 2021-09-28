@@ -102,5 +102,8 @@ Facter.add(:globepolicy_2_10_output) do
     Facter::Core::Execution.exec(
       'systemctl status chrony'
     )
+    Facter::Core::Execution.exec(
+      'puppet resource service chrony'
+    )
   end
 end
