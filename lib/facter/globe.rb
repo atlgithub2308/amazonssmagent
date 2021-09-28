@@ -189,7 +189,7 @@ Facter.add(:globepolicy_3_2) do
       'free -m |grep Mem | awk -F" " \'{ print $3}\' '
     )
     
-    percent = used / total * 100
+    percent = used.to_i / total.to_i * 100
    
     if ( percent < 70 )
       :pass
