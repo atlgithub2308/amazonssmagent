@@ -74,7 +74,7 @@ Facter.add(:globepolicy_2_9_output) do
   confine :operatingsystemmajrelease => '10'
   setcode do
     Facter::Core::Execution.exec(
-      'timezonectl'
+      'timedatectl'
     )
   end
 end
