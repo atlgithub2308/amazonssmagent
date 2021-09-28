@@ -219,3 +219,28 @@ Facter.add(:a_globepolicy_3_2_output) do
   end
 end
 
+Facter.add(:a_globepolicy_3_5) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    ut = Facter::Core::Execution.exec(
+      'uptime | awk -F" " \'{ print $3}\' '
+    )
+      
+    if ( ut.to_i <= 30 )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:a_globepolicy_3_5_output) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    Facter::Core::Execution.exec(
+      'uptime'
+    )
+  end
+end
