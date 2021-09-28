@@ -120,7 +120,7 @@ Facter.add(:globepolicy_2_10_dns) do
   confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
-      'awk -F" " \'{ print $4}\''
+      'awk -F" " \'{ print $4}\' /etc/resolv.conf'
     )
    
     if ( s == "google.internal." )
