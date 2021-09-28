@@ -2,10 +2,10 @@ Facter.add(:globepolicy_1_1) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
-    s = Facter::Core::Execution.exec(
-      '/sbin/sysctl kernel.randomize_va_space'
+    s1 = Facter::Core::Execution.exec(
+      'awk -F: '{ print $1}' /etc/passwd |grep sysad1'
     )
-    if ( s != 'kernel.randomize_va_space = 2' )
+    if ( s1 != 'sysad1' )
       :fail
     else
       :pass
@@ -18,7 +18,7 @@ Facter.add(:globepolicy_1_1_output) do
   confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
-      '/sbin/sysctl kernel.randomize_va_space'
+      'awk -F: '{ print $1}' /etc/passwd'
     )
   end
 end
