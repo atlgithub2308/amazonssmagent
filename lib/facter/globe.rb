@@ -25,3 +25,30 @@ Facter.add(:globepolicy_1_1_output) do
     )
   end
 end
+
+
+Facter.add(:globepolicy_1_5) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'puppet resource service sshd |  grep -i sshd |awk -F \' \' \'{ print $3}\''
+    )
+   
+    if ( s == "'sshd':" )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:globepolicy_1_5_output) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'puppet resource service sshd'
+    )
+  end
+end
