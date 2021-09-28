@@ -311,6 +311,31 @@ Facter.add(:a_globepolicy_4_1_output) do
   end
 end
 
+Facter.add(:a_globepolicy_4_3) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'puppet resource package wget |  grep -i ensure |awk -F "\'" \'{ print $2}\''
+    )
+    if ( s == "present" )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:a_globepolicy_4_3_output) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'puppet resource package wget'
+    )
+  end
+end
+
 Facter.add(:a_globepolicy_4_4) do
   confine :osfamily => ['Debian', 'RedHat']
   #confine :operatingsystemmajrelease => '10'
