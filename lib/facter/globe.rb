@@ -131,7 +131,7 @@ Facter.add(:globepolicy_2_10_dns) do
   end
 end
 
-Facter.add(:globepolicy_2_10_output1_ntp) do
+Facter.add(:globepolicy_2_10_output_dns) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
