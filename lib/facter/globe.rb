@@ -10,7 +10,7 @@ Facter.add(:globepolicy_1_1) do
     else
       :pass
       Facter::Core::Execution.exec(
-      '/sbin/sysctl kernel.randomize_va_space'
+      '/sbin/sysctl kernel.randomize_va_space')
     end
   end
 end
