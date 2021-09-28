@@ -316,9 +316,8 @@ Facter.add(:a_globepolicy_4_4) do
   #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
-      'puppet resource service urandom |  grep -i sshd |awk -F "\'" \'{ print $2}\''
+      'puppet resource service urandom |  grep -i ensure |awk -F "\'" \'{ print $2}\''
     )
-   
     if ( s == "running" )
       :pass
     else
