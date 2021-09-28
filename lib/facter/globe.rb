@@ -310,3 +310,29 @@ Facter.add(:a_globepolicy_4_1_output) do
     )
   end
 end
+
+Facter.add(:a_globepolicy_4_4) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'puppet resource service urandom |  grep -i sshd |awk -F "\'" \'{ print $2}\''
+    )
+   
+    if ( s == "running" )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:a_globepolicy_4_4_output) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'puppet resource service urandom'
+    )
+  end
+end
