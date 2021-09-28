@@ -5,10 +5,13 @@ Facter.add(:globepolicy_1_1) do
     s1 = Facter::Core::Execution.exec(
       'awk -F: \'{ print $1}\' /etc/passwd |grep "sysad1"'
     )
-    if ( s1 != 'sysad1' )
-      :fail
-    else
+    s2 = Facter::Core::Execution.exec(
+      'awk -F: \'{ print $1}\' /etc/passwd |grep "sysad2"'
+    )
+    if ( s1 == 'sysad1' and s2 == 'sysad2' )
       :pass
+    else
+      :fail
     end
   end
 end
