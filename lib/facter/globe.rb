@@ -282,3 +282,31 @@ Facter.add(:a_globepolicy_3_6_output) do
       end
     end
 end
+
+Facter.add(:a_globepolicy_4_1) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    s1 = Facter::Core::Execution.exec(
+      'cat /etc/cron.d/cron.allow |grep "sysad1"'
+    )
+    s2 = Facter::Core::Execution.exec(
+      'cat /etc/cron.d/cron.allow |grep "sysad2"'
+    )
+    if ( s1 == 'sysad1' and s2 == 'sysad2' )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:a_globepolicy_4_1_output) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'cat /etc/cron.d/cron.allow'
+    )
+  end
+end
