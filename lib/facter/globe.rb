@@ -9,8 +9,16 @@ Facter.add(:globepolicy_1_1) do
       :fail
     else
       :pass
-      Facter::Core::Execution.exec(
-      '/sbin/sysctl kernel.randomize_va_space')
     end
+  end
+end
+
+Facter.add(:globepolicy_1_1_output) do
+  confine :osfamily => 'Debian'
+  confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      '/sbin/sysctl kernel.randomize_va_space'
+    )
   end
 end
