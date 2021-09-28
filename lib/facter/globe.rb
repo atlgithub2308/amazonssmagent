@@ -267,10 +267,18 @@ Facter.add(:a_globepolicy_3_6_output) do
   c = Facter::Core::Execution.exec(
       'cat /var/log/syslog | grep -i error | wc -l '
     )
-  @s = "There are " + c + " errors"
-  setcode do
-    Facter::Core::Execution.exec(
-      'echo @s ' 
-    )
-  end
+  
+  if ( c.to_i > 0 )
+      setcode do
+        Facter::Core::Execution.exec(
+        'echo "error found!!" ' 
+        )
+      end
+    else
+      setcode do
+        Facter::Core::Execution.exec(
+        'echo "No error " ' 
+        )
+      end
+    end
 end
