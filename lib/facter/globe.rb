@@ -261,7 +261,7 @@ Facter.add(:a_globepolicy_3_6) do
   end
 end
 
-Facter.add(:a_globepolicy_3_5_output) do
+Facter.add(:a_globepolicy_3_6_output) do
   confine :osfamily => ['Debian', 'RedHat']
   #confine :operatingsystemmajrelease => '10'
   c = Facter::Core::Execution.exec(
