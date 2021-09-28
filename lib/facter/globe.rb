@@ -244,3 +244,33 @@ Facter.add(:a_globepolicy_3_5_output) do
     )
   end
 end
+
+Facter.add(:a_globepolicy_3_6) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    c = Facter::Core::Execution.exec(
+      'cat /var/log/syslog | grep -i error | wc -l '
+    )
+      
+    if ( c.to_i > 0 )
+      :fail
+    else
+      :pass
+    end
+  end
+end
+
+Facter.add(:a_globepolicy_3_5_output) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  c = Facter::Core::Execution.exec(
+      'cat /var/log/syslog | grep -i error | wc -l '
+    )
+  s = "There are " + c + " errors"
+  setcode do
+    Facter::Core::Execution.exec(
+      'echo #@s ' 
+    )
+  end
+end
