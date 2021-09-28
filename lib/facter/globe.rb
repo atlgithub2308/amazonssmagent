@@ -1,4 +1,4 @@
-Facter.add(:globepolicy_1_1) do
+Facter.add(:a_globepolicy_1_1) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -16,7 +16,7 @@ Facter.add(:globepolicy_1_1) do
   end
 end
 
-Facter.add(:globepolicy_1_1_output) do
+Facter.add(:a_globepolicy_1_1_output) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -27,7 +27,7 @@ Facter.add(:globepolicy_1_1_output) do
 end
 
 
-Facter.add(:globepolicy_1_5) do
+Facter.add(:a_globepolicy_1_5) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -43,7 +43,7 @@ Facter.add(:globepolicy_1_5) do
   end
 end
 
-Facter.add(:globepolicy_1_5_output) do
+Facter.add(:a_globepolicy_1_5_output) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -53,7 +53,7 @@ Facter.add(:globepolicy_1_5_output) do
   end
 end
 
-Facter.add(:globepolicy_2_9) do
+Facter.add(:a_globepolicy_2_9) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -69,7 +69,7 @@ Facter.add(:globepolicy_2_9) do
   end
 end
 
-Facter.add(:globepolicy_2_9_output) do
+Facter.add(:a_globepolicy_2_9_output) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -79,7 +79,7 @@ Facter.add(:globepolicy_2_9_output) do
   end
 end
 
-Facter.add(:globepolicy_2_a10_ntp) do
+Facter.add(:a_globepolicy_2_a10_ntp) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -95,7 +95,7 @@ Facter.add(:globepolicy_2_a10_ntp) do
   end
 end
 
-Facter.add(:globepolicy_2_a10_output1_ntp) do
+Facter.add(:a_globepolicy_2_a10_output1_ntp) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -105,7 +105,7 @@ Facter.add(:globepolicy_2_a10_output1_ntp) do
   end
 end
 
-Facter.add(:globepolicy_2_a10_output2_ntp) do
+Facter.add(:a_globepolicy_2_a10_output2_ntp) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -115,7 +115,7 @@ Facter.add(:globepolicy_2_a10_output2_ntp) do
   end
 end
 
-Facter.add(:globepolicy_2_b10_dns) do
+Facter.add(:a_globepolicy_2_b10_dns) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -131,7 +131,7 @@ Facter.add(:globepolicy_2_b10_dns) do
   end
 end
 
-Facter.add(:globepolicy_2_b10_output_dns) do
+Facter.add(:a_globepolicy_2_b10_output_dns) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -141,7 +141,7 @@ Facter.add(:globepolicy_2_b10_output_dns) do
   end
 end
 
-Facter.add(:globepolicy_2_b16) do
+Facter.add(:a_globepolicy_2_b16) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -157,7 +157,7 @@ Facter.add(:globepolicy_2_b16) do
   end
 end
 
-Facter.add(:globepolicy_2_b16_output1) do
+Facter.add(:a_globepolicy_2_b16_output1) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -167,7 +167,7 @@ Facter.add(:globepolicy_2_b16_output1) do
   end
 end
 
-Facter.add(:globepolicy_2_b16_output2) do
+Facter.add(:a_globepolicy_2_b16_output2) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -177,7 +177,7 @@ Facter.add(:globepolicy_2_b16_output2) do
   end
 end
 
-Facter.add(:globepolicy_3_2) do
+Facter.add(:a_globepolicy_3_2) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
@@ -199,7 +199,7 @@ Facter.add(:globepolicy_3_2) do
   end
 end
 
-Facter.add(:globepolicy_3_2_output) do
+Facter.add(:a_globepolicy_3_2_output) do
   confine :osfamily => 'Debian'
   confine :operatingsystemmajrelease => '10'
   setcode do
