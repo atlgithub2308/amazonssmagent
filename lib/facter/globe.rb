@@ -3,7 +3,7 @@ Facter.add(:globepolicy_1_1) do
   confine :operatingsystemmajrelease => '10'
   setcode do
     s1 = Facter::Core::Execution.exec(
-      'awk -F: '{ print $1}' /etc/passwd |grep sysad1'
+      'awk -F: \'{ print $1}\' /etc/passwd |grep "sysad1"'
     )
     if ( s1 != 'sysad1' )
       :fail
@@ -18,7 +18,7 @@ Facter.add(:globepolicy_1_1_output) do
   confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
-      'awk -F: '{ print $1}' /etc/passwd'
+      'awk -F: \'{ print $1}\' /etc/passwd'
     )
   end
 end
