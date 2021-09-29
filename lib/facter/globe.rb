@@ -378,7 +378,7 @@ Facter.add(:aaw_globepolicy_1_1) do
       'wmic service get startname | findstr "demosrvacct" > c:\a.txt '
     )
     tf = File.readlines('C:\a.txt')
-    f_search(f,'demosrvacct')
+    f_search(tf,'demosrvacct')
   end
 end
 
