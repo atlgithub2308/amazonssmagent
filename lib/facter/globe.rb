@@ -487,22 +487,13 @@ Facter.add(:aaw_globepolicy_3_6_output) do
   end
 end
 
-Facter.add(:aaw_globepolicy_4_3) do
-  confine :osfamily => 'windows'
-  setcode do
-    s = Facter::Core::Execution.exec(
-      'dir C:\windows\system32\nslookup.exe > C:\ns.txt '
-    )
-    tf = File.readlines('C:\ns.txt')
-    f_search(tf,'nslookup.exe')
-  end
-end
+
 
 Facter.add(:aaw_globepolicy_4_3_output) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
-      ' dir C:\windows\system32\nslookup.exe '
+      ' dir C:\Windows\System32\nslookup.exe '
     )
   end
 end
