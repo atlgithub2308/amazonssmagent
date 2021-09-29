@@ -455,7 +455,7 @@ Facter.add(:aaw_globepolicy_2_1_3_output) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
-      'wmic /namespace:\\root\CIMV2\TerminalServices PATH Win32_TerminalServiceSetting WHERE (__CLASS !="") CALL GetGracePeriodDays 2> '
+      'wmic /namespace:\\root\CIMV2\TerminalServices PATH Win32_TerminalServiceSetting WHERE (__CLASS !="") CALL GetGracePeriodDays '
     )
   end
 end
