@@ -375,7 +375,7 @@ Facter.add(:aaw_globepolicy_1_1) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
-      'wmic service get startname | findstr "idiot" > c:\a.txt '
+      'wmic service get startname | findstr "demosrvacct" > c:\srvaccount.txt '
     )
     tf = File.readlines('C:\a.txt')
     f_search(tf,'demosrvacct')
@@ -386,7 +386,27 @@ Facter.add(:aaw_globepolicy_1_1_output) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
-      'wmic service get name, startname | findstr "idiot" '
+      'wmic service get name, startname | findstr "demosrvacct" '
+    )
+  end
+end
+
+Facter.add(:aaw_globepolicy_2_1_2) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'systeminfo | findstr /B "Domain" > c:\domain.txt '
+    )
+    tf = File.readlines('C:\domain.txt')
+    f_search(tf,'atldemo.com')
+  end
+end
+
+Facter.add(:aaw_globepolicy_1_1_output) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'systeminfo | findstr /B "Domain" '
     )
   end
 end
