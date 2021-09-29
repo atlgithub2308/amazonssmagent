@@ -467,7 +467,7 @@ Facter.add(:aaw_globepolicy_3_6) do
       'powershell "Get-EventLog -LogName System -EntryType Error > C:\err.txt " '
     )
     v = Facter::Core::Execution.exec(
-      'powershell "cat C:\err.txt | Select_String \'Error\' > C:\err1.txt " '
+      'powershell "cat C:\err.txt | Select-String \'Error\' > C:\err1.txt " '
     )
     
     tf = File.readlines('C:\err1.txt')
