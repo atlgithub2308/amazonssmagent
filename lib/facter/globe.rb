@@ -373,7 +373,7 @@ end
 
 def f1_search (f,pattern)
   f.each do |line|
-    if line.match(/#{pattern}/) && !line.match(/#/)
+    if line.match(/#{pattern}/)
       return :fail
     end
   end
