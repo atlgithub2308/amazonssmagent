@@ -460,7 +460,13 @@ Facter.add(:aaw_globepolicy_2_1_3_output) do
   end
 end
 
-
-
+Facter.add(:aaw_globepolicy_3_6_output) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'Get-EventLog -LogName System -EntryType Error '
+    )
+  end
+end
 
 
