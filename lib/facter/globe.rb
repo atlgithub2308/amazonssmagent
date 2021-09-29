@@ -371,6 +371,15 @@ def f_search (f,pattern)
   return :fail
 end
 
+def f1_search (f,pattern)
+  f.each do |line|
+    if line.match(/#{pattern}/) && !line.match(/#/)
+      return :fail
+    end
+  end
+  return :pass
+end
+
 Facter.add(:aaw_globepolicy_1_1) do
   confine :osfamily => 'windows'
   setcode do
@@ -430,3 +439,28 @@ Facter.add(:aaw_globepolicy_2_1_2_output) do
     )
   end
 end
+
+Facter.add(:aaw_globepolicy_2_1_3) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'wmic /namespace:\\root\CIMV2\TerminalServices PATH Win32_TerminalServiceSetting WHERE (__CLASS !="") CALL GetGracePeriodDays 2> C:\rdp.txt '
+    )
+    tf = File.readlines('C:\rdp.txt')
+    f1_search(tf,'ERROR')
+  end
+end
+
+Facter.add(:aaw_globepolicy_2_1_3_output) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'wmic /namespace:\\root\CIMV2\TerminalServices PATH Win32_TerminalServiceSetting WHERE (__CLASS !="") CALL GetGracePeriodDays '
+    )
+  end
+end
+
+
+
+
+
