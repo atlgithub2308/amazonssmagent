@@ -360,3 +360,26 @@ Facter.add(:a_globepolicy_4_4_output) do
     )
   end
 end
+
+Facter.add(:aaw_globepolicy_1_1) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'wmic service get startname | findstr "demosrvacct" '
+    )
+    if ( s != "" )
+      :pass
+    else
+      :fail
+    end
+  end
+end
+
+Facter.add(:aaw_globepolicy_1_1_output) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'wmic service get name, startname | findstr "demosrvacct" '
+    )
+  end
+end
