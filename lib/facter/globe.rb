@@ -493,7 +493,7 @@ Facter.add(:aaw_globepolicy_4_3_output) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
-      ' dir C:\Windows\System32\nslookup.exe '
+      ' dir "C:\Windows\System32\nslookup.exe" '
     )
   end
 end
