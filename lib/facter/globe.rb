@@ -460,6 +460,17 @@ Facter.add(:aaw_globepolicy_2_1_3_output) do
   end
 end
 
+Facter.add(:aaw_globepolicy_3_6) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'powershell "Get-EventLog -LogName System -EntryType Error > C:\err.txt " '
+    )
+    tf = File.readlines('C:\err.txt')
+    f1_search(tf,'ERROR')
+  end
+end
+
 Facter.add(:aaw_globepolicy_3_6_output) do
   confine :osfamily => 'windows'
   setcode do
