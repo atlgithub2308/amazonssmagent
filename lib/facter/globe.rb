@@ -471,7 +471,7 @@ Facter.add(:aaw_globepolicy_3_6) do
     )
     
     tf = File.readlines('C:\err1.txt')
-    f1_search(tf,'Error')
+    f_search(tf,'idiot')
   end
 end
 
