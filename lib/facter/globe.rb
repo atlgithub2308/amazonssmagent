@@ -361,17 +361,24 @@ Facter.add(:a_globepolicy_4_4_output) do
   end
 end
 
+# Helpers
+def f_search (f,pattern)
+  f.each do |line|
+    if line.match(/#{pattern}/) && !line.match(/#/)
+      return :pass
+    end
+  end
+  return :fail
+end
+
 Facter.add(:aaw_globepolicy_1_1) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
-      'wmic service get startname | findstr "demosrvacct" '
+      'wmic service get startname | findstr "demosrvacct" > c:\a.txt '
     )
-    if ( s != "" )
-      :pass
-    else
-      :fail
-    end
+    tf = File.readlines('C:\a.txt')
+    f_search(f,'demosrvacct')
   end
 end
 
@@ -379,7 +386,7 @@ Facter.add(:aaw_globepolicy_1_1_output) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
-      'wmic service get name, startname | findstr "idiot" '
+      'wmic service get name, startname | findstr "demosrvacct" '
     )
   end
 end
