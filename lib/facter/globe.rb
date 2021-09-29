@@ -402,7 +402,7 @@ Facter.add(:aaw_globepolicy_2_1_2) do
   end
 end
 
-Facter.add(:aaw_globepolicy_1_1_output) do
+Facter.add(:aaw_globepolicy_2_1_2_output) do
   confine :osfamily => 'windows'
   setcode do
     s = Facter::Core::Execution.exec(
