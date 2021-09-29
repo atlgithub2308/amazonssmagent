@@ -391,6 +391,26 @@ Facter.add(:aaw_globepolicy_1_1_output) do
   end
 end
 
+Facter.add(:aaw_globepolicy_2_1_1) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'cscript /Nologo "C:\Windows\System32\slmgr.vbs" /dli > C:\actstatus.txt '
+    )
+    tf = File.readlines('C:\actstatus.txt')
+    f_search(tf,'Licensed')
+  end
+end
+
+Facter.add(:aaw_globepolicy_2_1_1_output) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'cscript /Nologo "C:\Windows\System32\slmgr.vbs" /dli '
+    )
+  end
+end
+
 Facter.add(:aaw_globepolicy_2_1_2) do
   confine :osfamily => 'windows'
   setcode do
