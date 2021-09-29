@@ -467,7 +467,7 @@ Facter.add(:aaw_globepolicy_3_6) do
       'powershell "Get-EventLog -LogName System -EntryType Error > C:\err.txt " '
     )
     tf = File.readlines('C:\err.txt')
-    f1_search(tf,'Error')
+    f1_search(tf,'Index')
   end
 end
 
