@@ -469,13 +469,16 @@ Facter.add(:aaw_globepolicy_3_6) do
     v = Facter::Core::Execution.exec(
       'powershell "cat C:\err.txt | Select-String \'Error\' > C:\err1.txt " '
     )
+   # x = Facter::Core::Execution.exec(
+   #   'powershell "Get-Content C:\err1.txt | %{ $_.Split(\' \')[9]; } > C:\err2.txt " '
+   # )
+    
     x = Facter::Core::Execution.exec(
-      'powershell "Get-Content C:\err1.txt | %{ $_.Split(\' \')[9]; } > C:\err2.txt " '
-    )
+       'findstr /n . C:\err1.txt | findstr "Error" > C:\err2.txt " '
     
     tf = File.readlines('C:\err2.txt')
-    f1_search(tf,'idiot')
-  end
+    f1_search(tf,'Error')
+      end
 end
 
 Facter.add(:aaw_globepolicy_3_6_output) do
