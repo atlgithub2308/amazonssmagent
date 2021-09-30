@@ -490,11 +490,12 @@ end
 Facter.add(:aaw_globepolicy_4_3) do
   confine :osfamily => 'windows'
   setcode do
-    Facter::Core::Execution.exec(
-      'dir C:\\ '
-    )
- #   tf = File.readlines('C:\ns.txt')
-  #  f_search(tf,'nslookup.exe')
+    d = 'C:\Windows\System32\nslookup.exe'
+    if File.file?(d)
+      :pass
+    else
+      :fail
+    end
   end
 end
 
