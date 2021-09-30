@@ -493,8 +493,8 @@ Facter.add(:aaw_globepolicy_4_3) do
     Facter::Core::Execution.exec(
       'dir "C:\Windows\System32\nslookup.exe" > "C:\ns.txt" '
     )
-    tf = File.readlines('C:\ns.txt')
-    f_search(tf,'nslookup.exe')
+ #   tf = File.readlines('C:\ns.txt')
+  #  f_search(tf,'nslookup.exe')
   end
 end
 
