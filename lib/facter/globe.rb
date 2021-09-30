@@ -474,10 +474,10 @@ Facter.add(:aaw_globepolicy_3_6) do
    # )
     
     x = Facter::Core::Execution.exec(
-       'findstr /n . C:\err1.txt | findstr "Error" > C:\err2.txt " '
+       'findstr /n . C:\err1.txt | findstr "Error" > C:\err2.txt '
     
     tf = File.readlines('C:\err2.txt')
-    f1_search(tf,'Error')
+    f_search(tf,'Error')
       end
 end
 
