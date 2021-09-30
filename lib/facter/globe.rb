@@ -35,11 +35,11 @@ Facter.add(:a_globepolicy_1_5) do
       'puppet resource service sshd |  grep -i ensure |awk -F \' \'{ print $2}\''
     )
    
-    if ( s == 'running' )
-      :pass
-    else
-      :fail
-    end
+   # if ( s == 'running' )
+   #   :pass
+   # else
+   #   :fail
+   # end
   end
 end
 
