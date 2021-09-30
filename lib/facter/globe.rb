@@ -32,10 +32,10 @@ Facter.add(:a_globepolicy_1_5) do
   #confine :operatingsystemmajrelease => '10'
   setcode do
     s = Facter::Core::Execution.exec(
-      'puppet resource service sshd |  grep -i ensure |awk -F \' \'{ print $2}\''
+      'puppet resource service sshd |  grep -i ensure |awk -F \' \' \'{ print $3}\''
     )
    
-   # if ( s == 'running' )
+   # if ( s == "'running'" )
    #   :pass
    # else
    #   :fail
