@@ -511,4 +511,22 @@ Facter.add(:aaw_globepolicy_4_3_output) do
   end
 end
 
+Facter.add(:aaw_globepolicy_6_2) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'wmic service get name, status | findstr "AviraSecurity" > C:\antivirus.txt '
+    )
+    tf = File.readlines('C:\antivirus.txt')
+    f_search(tf,'OK')
+  end
+end
 
+Facter.add(:aaw_globepolicy_6_2_output) do
+  confine :osfamily => 'windows'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'wmic service get name, status | findstr "AviraSecurity" '
+    )
+  end
+end
