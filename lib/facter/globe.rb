@@ -61,7 +61,7 @@ Facter.add(:a_globepolicy_2_9) do
       'timedatectl |  grep Time'
     )
    
-    if ( s == "Time zone: Etc/UTC \(UTC, +0000\)" )
+    if ( s == "Time zone: Asia/Singapore \(+08, +0800\)" )
       :pass
     else
       :fail
