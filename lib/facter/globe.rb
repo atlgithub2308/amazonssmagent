@@ -145,7 +145,7 @@ Facter.add(:a_globepolicy_2_b10_output_dns) do
   end
 end
 
-Facter.add(:a_globepolicy_2_b16) do
+Facter.add(:a_globepolicy_2_b16_1) do
   confine :osfamily => ['Debian', 'RedHat']
   #confine :operatingsystemmajrelease => '10'
   setcode do
@@ -168,6 +168,22 @@ Facter.add(:a_globepolicy_2_b16_output1) do
     Facter::Core::Execution.exec(
       'crontab -l'
     )
+  end
+end
+
+Facter.add(:a_globepolicy_2_b16_2) do
+  confine :osfamily => ['Debian', 'RedHat']
+  #confine :operatingsystemmajrelease => '10'
+  setcode do
+    s = Facter::Core::Execution.exec(
+      'puppet resource service cron |  grep -i ensure |awk -F \' \' \'{ print $3}\''
+    )
+   
+   if ( s == "'running'," )
+      :pass
+    else
+      :fail
+    end
   end
 end
 
