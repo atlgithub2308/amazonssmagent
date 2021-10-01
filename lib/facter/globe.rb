@@ -1,3 +1,7 @@
+
+#Linux
+##########################################
+
 Facter.add(:a_globepolicy_1_1) do
   confine :osfamily => ['Debian', 'RedHat']
   #confine :operatingsystemmajrelease => '10'
@@ -177,16 +181,6 @@ Facter.add(:a_globepolicy_2_b16_output2) do
   end
 end
 
-Facter.add(:a_globepolicy_2_b16_output2) do
-  confine :osfamily => 'RedHat'
-  #confine :operatingsystemmajrelease => '10'
-  setcode do
-    Facter::Core::Execution.exec(
-      'systemctl status crond'
-    )
-  end
-end
-
 Facter.add(:a_globepolicy_3_2) do
   confine :osfamily => ['Debian', 'RedHat']
   #confine :operatingsystemmajrelease => '10'
@@ -360,6 +354,10 @@ Facter.add(:a_globepolicy_4_4_output) do
     )
   end
 end
+
+
+#Windows
+##########################################
 
 # Helpers
 def f_search (f,pattern)
