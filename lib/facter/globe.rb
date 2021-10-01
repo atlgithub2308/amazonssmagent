@@ -171,7 +171,7 @@ Facter.add(:a_globepolicy_2_b16_output1) do
   end
 end
 
-Facter.add(:a_globepolicy_2_b16_2) do
+Facter.add(:a_globepolicy_2_b16_p2) do
   confine :osfamily => ['Debian', 'RedHat']
   #confine :operatingsystemmajrelease => '10'
   setcode do
