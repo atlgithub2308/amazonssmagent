@@ -237,7 +237,7 @@ Facter.add(:a_globepolicy_3_5) do
       'uptime | awk -F" " \'{ print $3}\' '
     )
       
-    if ( ut.to_i <= 30 )
+    if ( ut.to_i <= 5 )
       :pass
     else
       :fail
